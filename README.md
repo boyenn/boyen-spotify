@@ -6,7 +6,7 @@ A simple global hotkey (CTRL+ALT+R) to save the currently playing song to a play
 
 1. Download the exe from here : http://www.filedropper.com/boyen-spotify_4
 2. Put it anywhere on your system
-3. Create a new file called config.ini in the same directory as your boyen-spotify.exe (Make sure it's ANSI)
+3. Create a new file called config.ini in the same directory as your boyen-spotify.exe (Make sure it's ANSI)(make sure it's config.ini and not config.ini.txt)
 4. If you don't have one, create a lastfm account
 5. Connect spotify with lastfm in your spotify desktop application's settings 
 4. Refer to the next chapter for the config file content. Do this before going to the next step.
@@ -38,6 +38,17 @@ To find these values , go to your spotify desktop application, rightclick your p
 Paste this anywhere you want and you will get this format (this is mine for example) : spotify:user:119986897:playlist:129KfwIBp0N7pzlYlG7dOG
 
 Now copy the values into the config
+
+#If it fails check here
+
+##KeyError : LastFm
+
+Your config.ini file is either nonexistent or you might have saved it wrong (not ANSI or maybe .ini.txt) Also make sure that you didn't replace both sides of the variables (correct : userid : 119986897 , wrong : 119986897 : 119986897)
+
+##Index out of bounds
+
+You didnt play a song since you connected your spotify to lastfm
+
 
 
 
