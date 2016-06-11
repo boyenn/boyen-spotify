@@ -14,7 +14,8 @@ A simple global hotkey (CTRL+ALT+R) to save the currently playing song to a play
 6. Press ctrl+alt+r (this is a global hotkey , should work anywhere on your system including games)
 7. (This happens only one time, is for verification) You'll be prompted to copy paste an url into your browser. Do this and you'll get redirected to another url (starting with http://example.com)
 8. Copy the url you were directed to back into program
-9. From now on everytime you press ctrl+alt+R you'll save the currently playing song to your playlist
+9. From now on everytime you press ctrl+alt+R you'll save the currently playing song to your playlist 
+10. You have to keep the program open, but you can minimize the window.
 
 #Content of the config.ini file:
 
