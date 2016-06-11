@@ -35,6 +35,8 @@ To find these values , go to your spotify desktop application, rightclick your p
 
 Paste this anywhere you want and you will get this format (this is mine for example) : spotify:user:119986897:playlist:129KfwIBp0N7pzlYlG7dOG
 
+Now copy the values into the config
+
 
 
 
