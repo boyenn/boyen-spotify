@@ -26,7 +26,7 @@ user = user
 userid : userid
 playlistid : playlistid
 ```
-Replace the fields user,userid,playlistid with the correct values
+Replace the fields user,userid,playlistid with the correct values (explained below)
 ##User
 Your lastfm username
 ##Userid and playlistid
