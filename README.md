@@ -4,7 +4,7 @@ A simple global hotkey (CTRL+ALT+R) to save the currently playing song to a play
 
 #Installation guide :
 
-1. Download the exe from here : http://www.filedropper.com/boyen-spotify_3
+1. Download the exe from here : http://www.filedropper.com/boyen-spotify_4
 2. Put it anywhere on your system
 3. Create a new file called config.ini in the same directory as your boyen-spotify.exe (Make sure it's ANSI)
 4. If you don't have one, create a lastfm account
