@@ -1,7 +1,12 @@
-import pyHook
-import pythoncom
+
+
 import configparser
-from pyHook.HookManager import HookConstants
+
+from system_hotkey import SystemHotkey
+hk = SystemHotkey()
+hk.register(('control', 'alt', 'r'), callback=lambda x:OnHotkey())
+
+
 import spotipy
 import spotipy.util as util
 import requests
@@ -26,48 +31,30 @@ os.environ["SPOTIPY_CLIENT_SECRET"] = parser["api"]["SPOTIPY_CLIENT_SECRET"]
 
 
 
-def OnKeyboardEvent(event):
+def OnHotkey():
     global parser
-    global hm
 
-    ctrl_pressed = pyHook.GetKeyState(HookConstants.VKeyToID('VK_CONTROL')) >> 7
-    alt_pressed = pyHook.GetKeyState(HookConstants.VKeyToID('VK_MENU')) >> 7
-    if event.Key == "R":
+    req = requests.get("http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user="+parser["lastfm"]["user"]+ "&api_key="+parser["api"]["lastfm"]+"&format=json")
+    reqJSON = req.json()
+    curTrack = reqJSON['recenttracks']['track'][0]
+    artist = curTrack['artist']["#text"]
+    track = curTrack['name']
+    req = requests.get("http://api.spotify.com/v1/search?q=track:" + track + "%20artist:" + artist + "&type=track")
+    reqJSON = req.json()
+    trackURI = reqJSON['tracks']['items'][0]['uri'].split(":")[2]
+    trackURIs = [trackURI]
+    username = parser['spotify']['userid']
+    playlist_id = parser['spotify']['playlistid']
+    scope = 'playlist-modify-public'
+    token = util.prompt_for_user_token(username, scope)
 
+    if token:
+        sp = spotipy.Spotify(auth=token)
+        sp.trace = False
+        results = sp.user_playlist_add_tracks(username, playlist_id, trackURIs)
+        print (results)
+    else:
+        print ("Can't get token for", username)
 
-        if ctrl_pressed and alt_pressed:
-            hm.UnhookKeyboard()
-            req = requests.get("http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user="+parser["lastfm"]["user"]+ "&api_key="+parser["api"]["lastfm"]+"&format=json")
-            reqJSON = req.json()
-            curTrack = reqJSON['recenttracks']['track'][0]
-            artist = curTrack['artist']["#text"]
-            track = curTrack['name']
-            req = requests.get("http://api.spotify.com/v1/search?q=track:" + track + "%20artist:" + artist + "&type=track")
-            reqJSON = req.json()
-            trackURI = reqJSON['tracks']['items'][0]['uri'].split(":")[2]
-            trackURIs = [trackURI]
-            username = parser['spotify']['userid']
-            playlist_id = parser['spotify']['playlistid']
-            scope = 'playlist-modify-public'
-            token = util.prompt_for_user_token(username, scope)
-
-            if token:
-                sp = spotipy.Spotify(auth=token)
-                sp.trace = False
-                results = sp.user_playlist_add_tracks(username, playlist_id, trackURIs)
-                print (results)
-            else:
-                print ("Can't get token for", username)
-            hm.HookKeyboard()
-
-    return True
-
-# create a hook manager
-hm = pyHook.HookManager()
-# watch for all mouse events
-hm.KeyDown = OnKeyboardEvent
-# set the hook
-hm.HookKeyboard()
-
-pythoncom.PumpMessages()
-hm.UnhookKeyboard()
+while True:
+    time.sleep(1)
