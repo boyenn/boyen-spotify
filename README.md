@@ -1,5 +1,7 @@
 # boyen-spotify
 
+A simple global hotkey (CTRL+ALT+R) to save the currently playing song to a playlist. Very useful if you browse radios etc and don't want to swap to spotify all the time. I recommend using this together with https://github.com/attilagyongyosi/spotify-autohotkey (application to skip spotify songs etc with global hotkeys)
+
 #Installation guide :
 
 1. Download the exe 
