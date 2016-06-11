@@ -41,17 +41,17 @@ Now copy the values into the config
 
 #If it fails / you have problems , check here
 
-#Can I copy the url in the cmd window without having to type it over ? 
+###Can I copy the url in the cmd window without having to type it over ? 
 
 Ofcourse, rightclick the window at the top, edit -> select -
 
 Now just select the text and press ctrl+c to copy
 
-##I'm getting error : KeyError : LastFm
+###I'm getting error : KeyError : LastFm
 
 Your config.ini file is either nonexistent or you might have saved it wrong (not ANSI or maybe .ini.txt) Also make sure that you didn't replace both sides of the variables (correct : userid : 119986897 , wrong : 119986897 : 119986897)
 
-## I'm getting error : Index out of bounds
+### I'm getting error : Index out of bounds
 
 You didnt play a song since you connected your spotify to lastfm
 
