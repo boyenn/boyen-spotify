@@ -47,6 +47,8 @@ Ofcourse, rightclick the window at the top, edit -> select -
 
 Now just select the text and press ctrl+c to copy
 
+Excuse the dutch : https://gyazo.com/654a0c2101c308446cb17fbfccb24390
+
 ###I'm getting error : KeyError : LastFm
 
 Your config.ini file is either nonexistent or you might have saved it wrong (not ANSI or maybe .ini.txt) Also make sure that you didn't replace both sides of the variables (correct : userid : 119986897 , wrong : 119986897 : 119986897)
